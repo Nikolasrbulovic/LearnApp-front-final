@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 48px 96px;
+  gap: 48px;
+
+  .title {
+    text-align: center;
+  }
+
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .search-inputs {
+      display: flex;
+      gap: 48px;
+    }
+  }
+
+  .trainings-table {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 48px 0 96px 0;
+  }
+}

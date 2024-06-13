@@ -1,0 +1,46 @@
+<div class="container">
+  <app-text content="My Profile" type="header-sm" />
+  <div class="main">
+    <div class="avatar-image">
+      <img src="assets/images/avatar.png" />
+    </div>
+    <div>
+      <app-text content="Status" [isBold]="true" />
+      <app-text content="Active" color="primary" />
+    </div>
+  </div>
+  <div class="profile-info" *ngIf="!isEditing">
+    <div class="section">
+      <app-text content="First Name" [isBold]="true" />
+      <app-text [content]="profileData.firstName" />
+    </div>
+    <div>
+      <app-text content="Last Name" [isBold]="true" />
+      <app-text [content]="profileData.lastName" />
+    </div>
+    <div>
+      <app-text content="User Name" [isBold]="true" />
+      <app-text [content]="profileData.username" />
+    </div>
+    <div>
+      <app-text content="Date of birth" [isBold]="true" />
+      <app-text [content]="profileData.dateOfBirth" />
+    </div>
+    <div>
+      <app-text content="Address" [isBold]="true" />
+      <app-text [content]="profileData.address" />
+    </div>
+    <div>
+      <app-text content="Email" [isBold]="true" />
+      <app-text [content]="profileData.email" />
+    </div>
+  </div>
+  <div *ngIf="isEditing">
+    <app-input label="First name" />
+    <app-input label="Last name" />
+    <app-input label="User name" />
+    <app-input label="Date of birth" />
+    <app-input label="Address" />
+    <app-input label="Email" />
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  padding: 48px 96px;
+  gap: 16px;
+
+  .profile {
+    align-self: start;
+    text-align: start;
+  }
+
+  .buttons {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    .profile-buttons {
+      display: flex;
+      gap: 32px;
+    }
+  }
+
+  .edit-buttons {
+    align-self: center;
+    display: flex;
+    gap: 16px;
+  }
+
+  .my-trainings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 0;
+    gap: 48px;
+    width: 60%;
+    align-self: center;
+  }
+}

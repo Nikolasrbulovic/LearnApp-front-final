@@ -1,0 +1,41 @@
+<ng-container [ngSwitch]="type">
+  <h1
+    [class]="['text', 'header', color]"
+    [class.bold]="isBold"
+    *ngSwitchCase="'header'"
+  >
+    {{ content }}
+  </h1>
+  <h2
+    [class]="['text', 'subheader', color]"
+    [class.bold]="isBold"
+    *ngSwitchCase="'subheader'"
+  >
+    {{ content }}
+  </h2>
+  <h3
+    [class]="['text', 'header-md', color]"
+    [class.bold]="isBold"
+    *ngSwitchCase="'header-md'"
+  >
+    {{ content }}
+  </h3>
+  <h6
+    [class]="['text', 'header-sm', color]"
+    [class.bold]="isBold"
+    *ngSwitchCase="'header-sm'"
+  >
+    {{ content }}
+  </h6>
+  <p
+    class="text text-md"
+    [class]="color"
+    [class.bold]="isBold"
+    *ngSwitchCase="'text-md'"
+  >
+    {{ content }}
+  </p>
+  <p class="text" [class]="color" [class.bold]="isBold" *ngSwitchDefault>
+    {{ content }}
+  </p>
+</ng-container>

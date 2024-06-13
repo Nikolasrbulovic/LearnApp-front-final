@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 96px;
+
+  .title-section {
+    padding: 48px 0;
+    width: 780px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .whats-new-section {
+    padding-bottom: 24px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    .description {
+      width: 440px;
+    }
+
+    .articles {
+      display: flex;
+      gap: 24px;
+      padding: 48px 0;
+      text-align: start;
+    }
+  }
+}

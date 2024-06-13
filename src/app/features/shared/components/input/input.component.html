@@ -1,0 +1,16 @@
+<div class="input-container">
+  <p class="label" [class.error]="!!errorMsg">{{ label }}</p>
+  <input
+    class="input"
+    type="text"
+    [name]="name"
+    [class.error]="!!errorMsg"
+    [class.fullWidth]="fullWidth"
+    [disabled]="isDisabled"
+    [(ngModel)]="value"
+    [placeholder]="placeholder"
+    [type]="type"
+    (ngModelChange)="onValueChange($event)"
+  />
+  <p class="errorMsg">{{ errorMsg }}</p>
+</div>

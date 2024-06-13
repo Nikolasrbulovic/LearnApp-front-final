@@ -1,0 +1,52 @@
+@import "../../../../../styles/colors";
+
+.text {
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  color: $grey-900;
+  margin: 0;
+
+  &.primary {
+    color: $primary-300;
+  }
+
+  &.bold {
+    font-weight: 700;
+  }
+
+  &.grey {
+    color: $grey-300;
+  }
+
+  &.header {
+    font-size: 56px;
+    line-height: 78px;
+    font-weight: 700;
+  }
+
+  &.subheader {
+    font-size: 48px;
+    line-height: 68px;
+    font-weight: 700;
+  }
+
+  &.header-md {
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 700;
+  }
+
+  &.header-sm {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 700;
+  }
+
+  &.text-md {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+}

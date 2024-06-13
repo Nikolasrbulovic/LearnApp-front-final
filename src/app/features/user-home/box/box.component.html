@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="box">
+    <div class="image">
+      <img [src]="imgUrl" />
+    </div>
+    <div class="content">
+      <div>
+        <app-text [content]="tag" color="primary" />
+        <app-text [content]="title" type="header-sm" />
+      </div>
+      <div class="additional-info">
+        <app-text [content]="date" color="grey" />
+        <div class="time-to-read-box">
+          <app-text content="3 mins read" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

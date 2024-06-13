@@ -1,0 +1,22 @@
+@import "../../styles/colors.scss";
+@import "../../styles/sizes";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  width: 100%;
+  height: $header-height;
+  background: #ffffffff;
+  border-radius: 6px;
+  border-width: 1px;
+  border-color: $grey-200;
+  border-style: solid;
+  box-sizing: border-box;
+
+  .buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

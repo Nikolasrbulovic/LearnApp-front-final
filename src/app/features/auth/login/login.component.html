@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="sign-in-message">
+    <app-text content="Sign in" type="subheader" />
+    <app-text content="Welcome back" color="grey" />
+  </div>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="inputs">
+      <app-input
+        name="username"
+        label="Username"
+        placeholder="Enter username"
+        [errorMsg]="usernameError"
+        [(ngModel)]="username"
+        required
+      />
+      <app-input
+        name="password"
+        label="Password"
+        placeholder="Enter password"
+        type="password"
+        [errorMsg]="passwordError"
+        [(ngModel)]="password"
+        required
+      />
+    </div>
+    <app-button type="submit">Sign in</app-button>
+  </form>
+  <app-text content="OR" color="grey"></app-text>
+  <div class="sign-up-container">
+    <app-text content="Don't have an account?" />
+    <app-button variant="outlined" (click)="signUpClick()">Sign up</app-button>
+  </div>
+</div>

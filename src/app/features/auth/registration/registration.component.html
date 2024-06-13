@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="title">
+    <app-text content="Registration" type="subheader" />
+    <app-text
+      [content]="userType === 'student' ? 'Student' : 'Trainer'"
+      color="grey"
+    />
+  </div>
+  <div class="main">
+    <div class="registration-image">
+      <img
+        [src]="
+          userType === 'student'
+            ? 'assets/images/registration-image-student.png'
+            : 'assets/images/registration-image-trainer.png'
+        "
+      />
+    </div>
+    <div class="form-container">
+      <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="form">
+        <div>
+          <app-input
+            name="firstName"
+            label="First name"
+            placeholder="First name"
+            [fullWidth]="true"
+            [(ngModel)]="firstName"
+          ></app-input>
+          <app-input
+            name="lastName"
+            label="Last name"
+            placeholder="Last name"
+            [fullWidth]="true"
+            [(ngModel)]="lastName"
+          ></app-input>
+          <app-input
+            name="email"
+            label="Email"
+            placeholder="Email name"
+            [fullWidth]="true"
+            [(ngModel)]="email"
+          ></app-input>
+          <app-select
+            name="specialization"
+            *ngIf="userType === 'trainer'"
+            label="Specialization"
+            [options]="specializations"
+            [fullWidth]="true"
+            [(ngModel)]="specialization"
+          >
+          </app-select>
+          <app-input
+            name="dateOfBirth"
+            *ngIf="userType === 'student'"
+            label="Date of birth (optional)"
+            placeholder="Date of birth"
+            [fullWidth]="true"
+            [(ngModel)]="dateOfBirth"
+          ></app-input>
+          <app-input
+            name="address"
+            *ngIf="userType === 'student'"
+            label="Address (optional)"
+            placeholder="Address"
+            [fullWidth]="true"
+            [(ngModel)]="address"
+          ></app-input>
+        </div>
+        <app-button [fullWidth]="true" type="submit">Submit</app-button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+  <app-text content="My Account" type="subheader" />
+  <div class="profile">
+    <app-profile [isEditing]="isEditing" />
+  </div>
+  <div class="buttons" *ngIf="!isEditing">
+    <div class="profile-buttons">
+      <app-button (click)="onEditClick()">Edit profile</app-button>
+      <app-button color="secondary">Change password</app-button>
+    </div>
+    <app-delete-account />
+  </div>
+  <div class="edit-buttons" *ngIf="isEditing">
+    <app-button (click)="onCancelClick()" variant="outlined">Cancel</app-button>
+    <app-button (click)="onSaveClick()">Save changes</app-button>
+  </div>
+  <div class="my-trainings">
+    <app-text content="My Trainings" type="subheader" />
+    <app-text
+      content="The Training Section is interactive, allowing you to engage with trainers and fellow learners, participate in quizzes, and track your progress. All our courses are flexible and adaptable to your schedule and learning speed."
+    />
+    <app-button>View trainings</app-button>
+  </div>
+</div>

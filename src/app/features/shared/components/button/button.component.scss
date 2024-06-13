@@ -1,0 +1,77 @@
+@import "../../../../../styles/colors";
+
+.button {
+  cursor: pointer;
+  height: 44px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #ffffffff;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+  }
+
+  &.primary {
+    background: $primary-300;
+
+    &:enabled:hover {
+      background: $primary-400;
+    }
+
+    &:enabled:active {
+      background: $primary-500;
+    }
+
+    &.outlined {
+      background: white;
+      color: $primary-300;
+
+      &:hover {
+        color: $primary-300;
+        background: $primary-100;
+      }
+
+      &:hover:active {
+        color: $primary-300;
+        background: $primary-200;
+      }
+    }
+  }
+
+  &.secondary {
+    background: $secondary-100;
+
+    &:enabled:hover {
+      background: $secondary-200;
+    }
+
+    &:enabled:active {
+      background: $secondary-300;
+    }
+  }
+
+  &.important {
+    background: $important-100;
+
+    &:enabled:hover {
+      background: $important-200;
+    }
+
+    &:enabled:active {
+      background: $important-300;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div class="select-container">
+  <p class="label" [class.error]="!!errorMsg">{{ label }}</p>
+  <select
+    [name]="name"
+    [class.error]="!!errorMsg"
+    [class.fullWidth]="fullWidth"
+    [disabled]="isDisabled"
+    [required]="required"
+    [(ngModel)]="value"
+    (ngModelChange)="onValueChange($event)"
+  >
+    <option *ngFor="let option of options" [value]="option.value">
+      {{ option.label }}
+    </option>
+  </select>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+  <app-text [content]="title" type="header-sm" />
+  <app-text [content]="content" />
+
+  <div class="actions">
+    <app-button (click)="onCancel()" variant="outlined">Cancel</app-button>
+    <app-button
+      color="primary"
+      (click)="onConfirm()"
+      [color]="confirmButtonColor"
+      >Confirm</app-button
+    >
+  </div>
+</div>

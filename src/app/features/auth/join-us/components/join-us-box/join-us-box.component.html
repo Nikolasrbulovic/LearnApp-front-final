@@ -1,0 +1,13 @@
+<div class="join-us-box-container">
+    <div class="join-us-box-info">
+        <app-text [content]="title" type="subheader" />
+        <app-text
+        type="text-md"
+        [content]="description"
+        />
+        <app-button (click)="joinUsClick()">Join us</app-button>
+    </div>
+    <div class="join-us-box-image">
+        <img [src]="imgUrl" />
+    </div>
+</div>
