@@ -22,8 +22,11 @@
         [(ngModel)]="password"
         required
       />
+      <div class="login-error-msg">
+        <p *ngIf="loginErrorMsg">{{ loginErrorMsg }}</p>
+      </div>
     </div>
-    <app-button type="submit">Sign in</app-button>
+    <app-button type="submit" [isLoading]="isLoading">Sign in</app-button>
   </form>
   <app-text content="OR" color="grey"></app-text>
   <div class="sign-up-container">

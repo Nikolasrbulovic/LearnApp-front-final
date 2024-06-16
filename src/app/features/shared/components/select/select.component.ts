@@ -28,7 +28,6 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() placeholder: string = ''
   @Input() type: 'text' | 'password' = 'text'
   @Input() value: string = ''
-  @Input() required: boolean = false
   @Input() fullWidth: boolean = false
   @Input() options: { value: string; label: string }[] = []
 

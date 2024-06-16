@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { TextComponent } from '../../../shared/components/text/text.component';
-import { CommonModule } from '@angular/common';
-import { InputComponent } from '../../../shared/components/input/input.component';
+import { Component, Input } from '@angular/core'
+import { TextComponent } from '../../../shared/components/text/text.component'
+import { CommonModule } from '@angular/common'
+import { InputComponent } from '../../../shared/components/input/input.component'
+import { Student, User } from '../../../../../models/user.model'
 
 @Component({
   selector: 'app-profile',
@@ -11,14 +12,14 @@ import { InputComponent } from '../../../shared/components/input/input.component
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent {
-  @Input() isEditing: boolean = false;
+  @Input() isEditing: boolean = false
+  @Input() user?: User
 
-  public profileData = {
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'johndoe@gmail.com',
-    username: 'johndoe',
-    address: '/',
-    dateOfBirth: '01/01/1990',
-  };
+  getStudent(): Student | null {
+    if (!this.user || this.user.userType !== 'student') {
+      return null
+    }
+
+    return this.user as Student
+  }
 }

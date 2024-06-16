@@ -18,13 +18,15 @@
     </div>
     <div class="form-container">
       <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="form">
-        <div>
+        <div class="inputs">
           <app-input
             name="firstName"
             label="First name"
             placeholder="First name"
             [fullWidth]="true"
             [(ngModel)]="firstName"
+            [errorMsg]="firstNameErrorMsg"
+            required
           ></app-input>
           <app-input
             name="lastName"
@@ -32,6 +34,8 @@
             placeholder="Last name"
             [fullWidth]="true"
             [(ngModel)]="lastName"
+            [errorMsg]="lastNameErrorMsg"
+            required
           ></app-input>
           <app-input
             name="email"
@@ -39,6 +43,9 @@
             placeholder="Email name"
             [fullWidth]="true"
             [(ngModel)]="email"
+            [errorMsg]="emailErrorMsg"
+            email
+            required
           ></app-input>
           <app-select
             name="specialization"
@@ -47,6 +54,8 @@
             [options]="specializations"
             [fullWidth]="true"
             [(ngModel)]="specialization"
+            [errorMsg]="specializationErrorMsg"
+            required
           >
           </app-select>
           <app-input

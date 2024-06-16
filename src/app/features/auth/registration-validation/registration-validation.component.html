@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="title">
+    <app-text type="subheader" content="Registration" />
+    <fa-icon [icon]="circleCheckIcon" class="success-icon" size="5x" />
+  </div>
+  <div class="main">
+    <app-text
+      content="Congratulations, you have successfully registered with Learn Platform! Here is your credentials that you can change in your account"
+    />
+    <div class="credentials">
+      <app-text content="User name" [isBold]="true" />
+      <app-text [content]="username" />
+      <app-text content="Password" [isBold]="true" />
+      <app-text [content]="password" />
+    </div>
+  </div>
+  <app-button (click)="onMyAccountClick()">My account</app-button>
+</div>

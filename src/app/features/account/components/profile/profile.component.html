@@ -12,27 +12,27 @@
   <div class="profile-info" *ngIf="!isEditing">
     <div class="section">
       <app-text content="First Name" [isBold]="true" />
-      <app-text [content]="profileData.firstName" />
+      <app-text [content]="user?.firstName ?? ''" />
     </div>
     <div>
       <app-text content="Last Name" [isBold]="true" />
-      <app-text [content]="profileData.lastName" />
+      <app-text [content]="user?.lastName ?? ''" />
     </div>
     <div>
       <app-text content="User Name" [isBold]="true" />
-      <app-text [content]="profileData.username" />
+      <app-text [content]="user?.username ?? ''" />
     </div>
-    <div>
+    <div *ngIf="user?.userType === 'student'">
       <app-text content="Date of birth" [isBold]="true" />
-      <app-text [content]="profileData.dateOfBirth" />
+      <app-text [content]="getStudent()?.dateOfBirth ?? ''" />
     </div>
-    <div>
+    <div *ngIf="user?.userType === 'student'">
       <app-text content="Address" [isBold]="true" />
-      <app-text [content]="profileData.address" />
+      <app-text [content]="getStudent()?.address ?? ''" />
     </div>
     <div>
       <app-text content="Email" [isBold]="true" />
-      <app-text [content]="profileData.email" />
+      <app-text [content]="user?.email ?? ''" />
     </div>
   </div>
   <div *ngIf="isEditing">

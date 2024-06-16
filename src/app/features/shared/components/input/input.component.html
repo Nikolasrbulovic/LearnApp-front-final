@@ -12,5 +12,8 @@
     [type]="type"
     (ngModelChange)="onValueChange($event)"
   />
-  <p class="errorMsg">{{ errorMsg }}</p>
+  <div class="error-msg-container">
+    <fa-icon *ngIf="!!errorMsg" [icon]="warningIcon" class="error-icon" />
+    <p class="error-msg">{{ errorMsg }}</p>
+  </div>
 </div>

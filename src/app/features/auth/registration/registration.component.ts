@@ -2,13 +2,13 @@ import { Component, ViewChild } from '@angular/core'
 import { TextComponent } from '../../shared/components/text/text.component'
 import { ButtonComponent } from '../../shared/components/button/button.component'
 import { InputComponent } from '../../shared/components/input/input.component'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { SelectComponent } from '../../shared/components/select/select.component'
 import { FormsModule, NgForm } from '@angular/forms'
-import { AuthApiService } from '../services/auth-api.service'
+import { AuthApiService } from '../../../../services/auth-api.service'
 import { HttpClientModule } from '@angular/common/http'
-import { SpecializationsService } from '../services/specializations.service'
+import { SpecializationsService } from '../../../../services/specializations.service'
 @Component({
   selector: 'app-registration',
   standalone: true,
@@ -34,10 +34,14 @@ export class RegistrationComponent {
   specialization?: string
   dateOfBirth?: string
   address?: string
+  isLoading: boolean = false
+  private storage: Storage = localStorage
+
   public specializations: { value: string; label: string }[] = []
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private authApiService: AuthApiService,
     private specializationsService: SpecializationsService
   ) {
@@ -56,14 +60,20 @@ export class RegistrationComponent {
       })
   }
   onSubmit(): void {
-    const firstNameCtrl = this.registerForm?.form?.controls['firstName']
-    const lastNameCtrl = this.registerForm?.form?.controls['lastName']
-    const emailCtrl = this.registerForm?.form?.controls['email']
-    const specializationCtrl =
-      this.registerForm?.form?.controls['specialization']
-    const dateOfBirthCtrl = this.registerForm?.form?.controls['dateOfBirth']
-    const addressCtrl = this.registerForm?.form?.controls['address']
+    const formControlNames = Object.keys(this.registerForm.form.controls)
+    if (
+      formControlNames.some(
+        (controlName) => this.registerForm.form.controls[controlName].invalid
+      )
+    ) {
+      formControlNames.forEach((controlName) => {
+        this.registerForm.form.controls[controlName].markAsDirty()
+      })
+      return
+    }
+
     if (this.userType === 'trainer') {
+      this.isLoading = true
       this.authApiService
         .register({
           firstName: this.firstName!,
@@ -72,17 +82,83 @@ export class RegistrationComponent {
           specializationId: this.specialization,
           userType: this.userType,
         })
-        .subscribe((res) => console.log(res))
+        .subscribe({
+          next: (res) => {
+            this.isLoading = false
+            this.storage.setItem('authToken', res.authToken)
+            const navigationExtras: NavigationExtras = {
+              state: {
+                username: res.username,
+                password: res.password,
+              },
+            }
+            this.router.navigate(['/register-validation'], navigationExtras)
+          },
+          error: () => {
+            this.isLoading = false
+          },
+        })
     } else {
-      console.log('asd2')
-
-      // this.authApiService.register(
-      //   this.firstName!,
-      //   this.lastName!,
-      //   this.email!,
-      //   this.dateOfBirth!,
-      //   this.address!
-      // )
+      this.authApiService.register({
+        firstName: this.firstName!,
+        lastName: this.lastName!,
+        email: this.email!,
+        userType: this.userType,
+        dateOfBirth: this.dateOfBirth!,
+        address: this.address!,
+      })
     }
+  }
+
+  get firstNameErrorMsg(): string | null {
+    const usernameCtrl = this.registerForm?.form?.controls['firstName']
+    if (usernameCtrl?.dirty === false) {
+      return null
+    }
+    const usernameErrors = usernameCtrl?.errors
+    if (usernameErrors) {
+      return 'First name is required'
+    }
+    return null
+  }
+
+  get lastNameErrorMsg(): string | null {
+    const lastNameCtrl = this.registerForm?.form?.controls['lastName']
+    if (lastNameCtrl?.dirty === false) {
+      return null
+    }
+    const lastNameErrors = lastNameCtrl?.errors
+    if (lastNameErrors) {
+      return 'Last name is required'
+    }
+    return null
+  }
+
+  get emailErrorMsg(): string | null {
+    const emailCtrl = this.registerForm?.form?.controls['email']
+    if (emailCtrl?.dirty === false) {
+      return null
+    }
+    const emailErrors = emailCtrl?.errors
+    if (emailErrors?.['required']) {
+      return 'Email is required'
+    }
+    if (emailErrors?.['email']) {
+      return 'Invalid email'
+    }
+    return null
+  }
+
+  get specializationErrorMsg(): string | null {
+    const specializationCtrl =
+      this.registerForm?.form?.controls['specialization']
+    if (specializationCtrl?.dirty === false) {
+      return null
+    }
+    const specializationErrors = specializationCtrl?.errors
+    if (specializationErrors) {
+      return 'Specialization is required'
+    }
+    return null
   }
 }

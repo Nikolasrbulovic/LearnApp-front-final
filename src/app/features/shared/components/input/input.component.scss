@@ -1,4 +1,4 @@
-@import "../../../../../styles/colors";
+@import '../../../../../styles/colors';
 
 .input-container {
   display: flex;
@@ -59,13 +59,24 @@
       background-color: white;
     }
   }
+  .error-msg-container {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    height: 22px;
+    padding: 1px 0;
 
-  .errorMsg {
-    font-family: Poppins;
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 400;
-    color: $red-200;
-    margin-left: 10px;
+    .error-icon {
+      color: $red-200;
+    }
+
+    .error-msg {
+      font-family: Poppins;
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 400;
+      color: $red-200;
+      margin: 0px;
+    }
   }
 }
