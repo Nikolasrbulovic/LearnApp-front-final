@@ -23,7 +23,6 @@ export class HeaderComponent {
 
   ngOnInit(): void {
     this.userSubscription = this.userService.user$.subscribe((user) => {
-      console.log('user se promeniooo', user)
       this.user = user
     })
   }

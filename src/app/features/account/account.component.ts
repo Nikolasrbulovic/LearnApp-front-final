@@ -32,7 +32,6 @@ export class AccountComponent {
 
   ngOnInit() {
     const user = this.userService.getUser()
-    console.log(user, 'xx')
     if (!user) {
       this.userService.me().subscribe({ next: (user) => (this.user = user) })
       return
@@ -48,9 +47,7 @@ export class AccountComponent {
     this.isEditing = false
   }
 
-  onSaveClick = () => {
-    console.log('save')
-  }
+  onSaveClick = () => {}
 
   onViewTrainingsClick = () => {
     this.router.navigate(['/trainings'])

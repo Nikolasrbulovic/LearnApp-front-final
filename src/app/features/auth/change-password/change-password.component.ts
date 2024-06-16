@@ -52,7 +52,6 @@ export class ChangePasswordComponent {
   }
 
   onSubmit() {
-    console.log('usao')
     const formControlNames = Object.keys(this.changePasswordForm.form.controls)
     if (
       formControlNames.some(

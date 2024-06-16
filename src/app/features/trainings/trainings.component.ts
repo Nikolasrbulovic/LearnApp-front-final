@@ -45,7 +45,6 @@ export class TrainingsComponent {
         trainingName: training.name,
         type: training.type.type,
       }))
-      console.log(this.rows)
     })
   }
 }

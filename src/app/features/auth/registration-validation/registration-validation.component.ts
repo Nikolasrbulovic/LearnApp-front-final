@@ -23,7 +23,7 @@ export class RegistrationValidationComponent {
       username: string
       password: string
     }
-    console.log({ navigation }, 'xx')
+
     if (state) {
       this.username = state.username
       this.password = state.password
