@@ -9,42 +9,87 @@ import { Training } from '../../../models/training'
 import { Column } from '../shared/components/table/types'
 import { TrainingTableModel } from './types'
 import { formatDate } from 'date-fns'
+import { UserService } from '../../../services/user.service'
+import { Subscription } from 'rxjs'
+import { User } from '../../../models/user.model'
 
 @Component({
   selector: 'app-trainings',
   standalone: true,
-  imports: [
-    TableComponent,
-    TextComponent,
-    ButtonComponent,
-    InputComponent,
-    // HttpClientModule,
-  ],
+  imports: [TableComponent, TextComponent, ButtonComponent, InputComponent],
   providers: [TrainingsService],
   templateUrl: './trainings.component.html',
   styleUrl: './trainings.component.scss',
 })
 export class TrainingsComponent {
-  trainings: Training[] = []
-  columns: Column[] = [
-    { name: 'Date' },
-    { name: 'Training name', cellClass: 'bold' },
-    { name: 'Type', cellClass: 'pill' },
-    { name: 'Trainer name' },
-    { name: 'Duration' },
-  ]
-  rows: TrainingTableModel[] = []
-  constructor(private trainingsService: TrainingsService) {}
+  user: User | null = null
+  private userSubscription: Subscription | null = null
+  private trainings: Training[] = []
 
-  ngOnInit() {
-    this.trainingsService.getTrainings().subscribe((trainings) => {
-      this.rows = trainings.map((training) => ({
+  constructor(
+    private trainingsService: TrainingsService,
+    private userService: UserService
+  ) {}
+
+  get columnsByUserType(): Column[] {
+    if (!this.trainings || !this.user) {
+      return []
+    }
+    if (this.user.role === 'student') {
+      return [
+        { name: 'Date' },
+        { name: 'Training name', cellClass: 'bold' },
+        { name: 'Type', cellClass: 'pill' },
+        { name: 'Trainer name' },
+        { name: 'Duration' },
+      ]
+    } else {
+      return [
+        { name: 'Date' },
+        { name: 'Training name', cellClass: 'bold' },
+        { name: 'Type', cellClass: 'pill' },
+        { name: 'Student name' },
+        { name: 'Duration' },
+      ]
+    }
+  }
+
+  get rowsByUserType(): TrainingTableModel[] {
+    if (!this.trainings || !this.user) {
+      return []
+    }
+
+    if (this.user.role === 'student') {
+      return this.trainings.map((training) => ({
         date: formatDate(training.date, 'dd.MM.yyyy'),
         duration: `${training.duration} d`,
-        trainerName: training.trainerId,
+        trainerName: training.trainer.fullName,
         trainingName: training.name,
         type: training.type.type,
       }))
+    } else {
+      return this.trainings.map((training) => ({
+        date: formatDate(training.date, 'dd.MM.yyyy'),
+        duration: `${training.duration} d`,
+        studentName: training.student.fullName,
+        trainingName: training.name,
+        type: training.type.type,
+      }))
+    }
+  }
+
+  ngOnInit() {
+    this.userSubscription = this.userService.user$.subscribe((user) => {
+      this.user = user
     })
+    this.trainingsService.getTrainings().subscribe((trainings) => {
+      this.trainings = trainings
+    })
+  }
+
+  ngOnDestroy(): void {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe()
+    }
   }
 }

@@ -22,13 +22,19 @@
       <app-text content="User Name" [isBold]="true" />
       <app-text [content]="user?.username ?? ''" />
     </div>
-    <div *ngIf="user?.userType === 'student'">
+    <div *ngIf="user?.role === 'student'">
       <app-text content="Date of birth" [isBold]="true" />
       <app-text [content]="getStudent()?.dateOfBirth ?? ''" />
     </div>
-    <div *ngIf="user?.userType === 'student'">
+    <div *ngIf="user?.role === 'student'">
       <app-text content="Address" [isBold]="true" />
       <app-text [content]="getStudent()?.address ?? ''" />
+    </div>
+    <div *ngIf="user?.role === 'trainer'">
+      <app-text content="Specialization" [isBold]="true" />
+      <app-text
+        [content]="getTrainer()?.specialization?.specialization ?? ''"
+      />
     </div>
     <div>
       <app-text content="Email" [isBold]="true" />
@@ -36,11 +42,25 @@
     </div>
   </div>
   <div *ngIf="isEditing">
-    <app-input label="First name" />
-    <app-input label="Last name" />
-    <app-input label="User name" />
-    <app-input label="Date of birth" />
-    <app-input label="Address" />
+    <app-input label="First name" placeholder="First name" />
+    <app-input label="Last name" placeholder="Last name" />
+    <app-input label="User name" placeholder="User name" />
+    <app-input
+      *ngIf="user?.role === 'student'"
+      label="Date of birth"
+      placeholder="Date of birth"
+    />
+    <app-input
+      *ngIf="user?.role === 'student'"
+      label="Address"
+      placeholder="Address"
+    />
     <app-input label="Email" />
+    <app-select
+      *ngIf="user?.role === 'trainer'"
+      label="Specialization"
+      placeholder="Specialization"
+      [options]="specializations"
+    />
   </div>
 </div>

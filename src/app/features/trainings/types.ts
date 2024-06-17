@@ -1,7 +1,12 @@
-export type TrainingTableModel = {
-  date: string
-  trainingName: string
-  type: string
-  trainerName: string
-  duration: string
-}
+export type TrainingTableModel =
+  | {
+      date: string
+      trainingName: string
+      type: string
+      duration: string
+    } & (
+      | {
+          trainerName: string
+        }
+      | { studentName: string }
+    )

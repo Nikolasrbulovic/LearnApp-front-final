@@ -23,7 +23,6 @@ export class HeaderComponent {
   }
 
   ngOnInit(): void {
-    this.user$.pipe().subscribe((user) => console.log(user))
     this.userSubscription = this.userService.user$.subscribe((user) => {
       console.log('User: ', user)
       this.user = user

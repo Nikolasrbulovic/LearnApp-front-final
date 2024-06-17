@@ -8,6 +8,7 @@ import { TextComponent } from './features/shared/components/text/text.component'
 import { UserService } from '../services/user.service'
 import { HttpClientModule } from '@angular/common/http'
 import { TrainingsService } from '../services/trainings-service'
+import { SpecializationsService } from '../services/specializations.service'
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,7 +21,7 @@ import { TrainingsService } from '../services/trainings-service'
     TextComponent,
     HttpClientModule,
   ],
-  providers: [UserService],
+  providers: [UserService, SpecializationsService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

@@ -7,15 +7,15 @@ export type UserBasicInfo = {
 }
 
 export type Trainer = UserBasicInfo & {
-  userType: 'trainer'
+  role: 'trainer'
   specialization: {
     id: string
-    name: string
+    specialization: string
   }
 }
 
 export type Student = UserBasicInfo & {
-  userType: 'student'
+  role: 'student'
   dateOfBirth?: string
   address?: string
 }

@@ -82,5 +82,6 @@ export class UserService {
   clearUser() {
     this.userSubject.next(null)
     localStorage.removeItem(this.userStorageKey)
+    localStorage.removeItem('authToken')
   }
 }

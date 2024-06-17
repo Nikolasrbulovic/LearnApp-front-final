@@ -1,7 +1,11 @@
 export type Training = {
   id?: string
-  studentId: string
-  trainerId: string
+  student: {
+    fullName: string
+  }
+  trainer: {
+    fullName: string
+  }
   name: string
   type: TrainingType
   date: string
