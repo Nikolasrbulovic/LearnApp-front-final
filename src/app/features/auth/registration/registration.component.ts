@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common'
 import { SelectComponent } from '../../shared/components/select/select.component'
 import { FormsModule, NgForm } from '@angular/forms'
 import { AuthApiService } from '../../../../services/auth-api.service'
-import { HttpClientModule } from '@angular/common/http'
 import { SpecializationsService } from '../../../../services/specializations.service'
 @Component({
   selector: 'app-registration',
@@ -19,7 +18,6 @@ import { SpecializationsService } from '../../../../services/specializations.ser
     CommonModule,
     SelectComponent,
     FormsModule,
-    HttpClientModule,
   ],
   providers: [AuthApiService, SpecializationsService],
   templateUrl: './registration.component.html',

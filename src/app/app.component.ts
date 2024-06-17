@@ -7,6 +7,7 @@ import { ButtonComponent } from './features/shared/components/button/button.comp
 import { TextComponent } from './features/shared/components/text/text.component'
 import { UserService } from '../services/user.service'
 import { HttpClientModule } from '@angular/common/http'
+import { TrainingsService } from '../services/trainings-service'
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,10 +27,10 @@ import { HttpClientModule } from '@angular/common/http'
 export class AppComponent {
   title = 'learn-app'
 
-  constructor(private userService: UserService) {}
+  // constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     // Fetch the current user when the application starts
-    this.userService.me().subscribe()
+    // this.userService.me().subscribe()
   }
 }

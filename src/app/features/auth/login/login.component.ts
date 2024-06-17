@@ -6,7 +6,7 @@ import { Router } from '@angular/router'
 import { FormsModule, NgForm } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { AuthApiService } from '../../../../services/auth-api.service'
-import { HttpClientModule } from '@angular/common/http'
+// import { HttpClientModule } from '@angular/common/http'
 import { UserService } from '../../../../services/user.service'
 
 @Component({
@@ -18,9 +18,9 @@ import { UserService } from '../../../../services/user.service'
     InputComponent,
     ButtonComponent,
     FormsModule,
-    HttpClientModule,
+    // HttpClientModule,
   ],
-  providers: [AuthApiService, UserService],
+  providers: [AuthApiService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

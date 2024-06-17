@@ -3,12 +3,12 @@ import { BoxComponent } from './box/box.component'
 import { TextComponent } from '../shared/components/text/text.component'
 import { ButtonComponent } from '../shared/components/button/button.component'
 import { UserService } from '../../../services/user.service'
-import { HttpClientModule } from '@angular/common/http'
+// import { HttpClientModule } from '@angular/common/http'
 
 @Component({
   selector: 'app-user-home',
   standalone: true,
-  imports: [BoxComponent, TextComponent, ButtonComponent, HttpClientModule],
+  imports: [BoxComponent, TextComponent, ButtonComponent],
   providers: [UserService],
   templateUrl: './user-home.component.html',
   styleUrl: './user-home.component.scss',

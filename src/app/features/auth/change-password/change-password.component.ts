@@ -3,7 +3,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { TextComponent } from '../../shared/components/text/text.component'
 import { InputComponent } from '../../shared/components/input/input.component'
 import { FormsModule, NgForm } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http'
+// import { HttpClientModule } from '@angular/common/http'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { faCircleCheck, faLock } from '@fortawesome/free-solid-svg-icons'
 import { CommonModule, Location } from '@angular/common'
@@ -18,11 +18,11 @@ import { Router } from '@angular/router'
     TextComponent,
     InputComponent,
     FormsModule,
-    HttpClientModule,
+    // HttpClientModule,
     FontAwesomeModule,
     CommonModule,
   ],
-  providers: [UserService],
+  // providers: [UserService],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.scss',
 })

@@ -75,7 +75,9 @@
             [(ngModel)]="address"
           ></app-input>
         </div>
-        <app-button [fullWidth]="true" type="submit">Submit</app-button>
+        <app-button [fullWidth]="true" type="submit" [isLoading]="isLoading"
+          >Submit</app-button
+        >
       </form>
     </div>
   </div>

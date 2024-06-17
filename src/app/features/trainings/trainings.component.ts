@@ -4,7 +4,7 @@ import { TextComponent } from '../shared/components/text/text.component'
 import { ButtonComponent } from '../shared/components/button/button.component'
 import { InputComponent } from '../shared/components/input/input.component'
 import { TrainingsService } from '../../../services/trainings-service'
-import { HttpClientModule } from '@angular/common/http'
+// import { HttpClientModule } from '@angular/common/http'
 import { Training } from '../../../models/training'
 import { Column } from '../shared/components/table/types'
 import { TrainingTableModel } from './types'
@@ -18,7 +18,7 @@ import { formatDate } from 'date-fns'
     TextComponent,
     ButtonComponent,
     InputComponent,
-    HttpClientModule,
+    // HttpClientModule,
   ],
   providers: [TrainingsService],
   templateUrl: './trainings.component.html',

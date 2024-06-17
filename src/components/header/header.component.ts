@@ -2,26 +2,30 @@ import { Component } from '@angular/core'
 import { ButtonComponent } from '../../app/features/shared/components/button/button.component'
 import { Router } from '@angular/router'
 import { UserService } from '../../services/user.service'
-import { HttpClientModule } from '@angular/common/http'
-import { Subscription } from 'rxjs'
+import { Observable, Subscription } from 'rxjs'
 import { User } from '../../models/user.model'
 import { CommonModule } from '@angular/common'
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ButtonComponent, HttpClientModule, CommonModule],
-  providers: [UserService],
+  imports: [ButtonComponent, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  constructor(private router: Router, private userService: UserService) {}
+  protected user$: Observable<User | null>
 
   user: User | null = null
   private userSubscription: Subscription | null = null
 
+  constructor(private router: Router, private userService: UserService) {
+    this.user$ = this.userService.user$
+  }
+
   ngOnInit(): void {
+    this.user$.pipe().subscribe((user) => console.log(user))
     this.userSubscription = this.userService.user$.subscribe((user) => {
+      console.log('User: ', user)
       this.user = user
     })
   }

@@ -8,7 +8,9 @@ import { Training } from '../models/training'
   providedIn: 'root',
 })
 export class TrainingsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log('created)')
+  }
 
   getTrainings() {
     return this.http.get<Training[]>(`http://localhost:3004/dev/trainings`, {

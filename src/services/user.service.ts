@@ -16,6 +16,7 @@ export class UserService {
   public user$: Observable<User | null>
 
   constructor(private http: HttpClient) {
+    console.log('UserService created')
     const storedUser = localStorage.getItem(this.userStorageKey)
     this.userSubject = new BehaviorSubject<User | null>(
       storedUser ? JSON.parse(storedUser) : null
