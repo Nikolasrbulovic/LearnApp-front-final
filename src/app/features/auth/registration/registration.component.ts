@@ -99,14 +99,32 @@ export class RegistrationComponent {
           },
         })
     } else {
-      this.authApiService.register({
-        firstName: this.firstName!,
-        lastName: this.lastName!,
-        email: this.email!,
-        userType: this.userType,
-        dateOfBirth: this.dateOfBirth!,
-        address: this.address!,
-      })
+      console.log('Sasd')
+      this.authApiService
+        .register({
+          firstName: this.firstName!,
+          lastName: this.lastName!,
+          email: this.email!,
+          userType: this.userType,
+          dateOfBirth: this.dateOfBirth!,
+          address: this.address!,
+        })
+        .subscribe({
+          next: (res) => {
+            this.isLoading = false
+            this.storage.setItem('authToken', res.authToken)
+            const navigationExtras: NavigationExtras = {
+              state: {
+                username: res.username,
+                password: res.password,
+              },
+            }
+            this.router.navigate(['/register-validation'], navigationExtras)
+          },
+          error: () => {
+            this.isLoading = false
+          },
+        })
     }
   }
 

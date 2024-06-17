@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { Subscription } from 'rxjs'
 import { User } from '../../models/user.model'
 import { CommonModule } from '@angular/common'
-
 @Component({
   selector: 'app-header',
   standalone: true,
