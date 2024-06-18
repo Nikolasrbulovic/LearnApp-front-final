@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common'
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component'
 import { UserService } from '../../../services/user.service'
 import { User } from '../../../models/user.model'
-// import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { Router } from '@angular/router'
 
 @Component({
@@ -18,9 +17,7 @@ import { Router } from '@angular/router'
     ProfileComponent,
     CommonModule,
     DeleteAccountComponent,
-    // HttpClientModule,
   ],
-  // providers: [HttpClient],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss',
 })

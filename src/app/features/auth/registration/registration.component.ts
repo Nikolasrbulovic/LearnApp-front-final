@@ -97,7 +97,6 @@ export class RegistrationComponent {
           },
         })
     } else {
-      console.log('Sasd')
       this.authApiService
         .register({
           firstName: this.firstName!,

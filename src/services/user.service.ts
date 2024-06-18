@@ -16,7 +16,6 @@ export class UserService {
   public user$: Observable<User | null>
 
   constructor(private http: HttpClient) {
-    console.log('UserService created')
     const storedUser = localStorage.getItem(this.userStorageKey)
     this.userSubject = new BehaviorSubject<User | null>(
       storedUser ? JSON.parse(storedUser) : null
@@ -68,6 +67,50 @@ export class UserService {
         }
       )
       .pipe(tap(() => this.clearUser()))
+  }
+
+  updateProfile({
+    firstName,
+    lastName,
+    email,
+    userType,
+    username,
+    specializationId,
+    dateOfBirth,
+    address,
+  }: {
+    firstName: string
+    lastName: string
+    email: string
+    userType: string
+    username: string
+    specializationId?: string
+    dateOfBirth?: string
+    address?: string
+  }) {
+    return this.http.put<{
+      username: string
+      password: string
+      authToken: string
+    }>(
+      `${this.apiUrl}/users/update-user`,
+      {
+        firstName,
+        lastName,
+        username,
+        email,
+        userType,
+        specializationId,
+        dateOfBirth,
+        address,
+        isActive: true,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+        },
+      }
+    )
   }
 
   setUser(data: User) {

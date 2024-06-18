@@ -41,26 +41,72 @@
       <app-text [content]="user?.email ?? ''" />
     </div>
   </div>
-  <div *ngIf="isEditing">
-    <app-input label="First name" placeholder="First name" />
-    <app-input label="Last name" placeholder="Last name" />
-    <app-input label="User name" placeholder="User name" />
+  <form
+    id="profile-form"
+    *ngIf="isEditing"
+    #profileForm="ngForm"
+    (ngSubmit)="onSubmit()"
+  >
     <app-input
+      name="firstName"
+      label="First name"
+      placeholder="First name"
+      [fullWidth]="true"
+      [(ngModel)]="firstName"
+      [errorMsg]="firstNameErrorMsg"
+      required
+    ></app-input>
+    <app-input
+      name="lastName"
+      label="Last name"
+      placeholder="Last name"
+      [fullWidth]="true"
+      [(ngModel)]="lastName"
+      [errorMsg]="lastNameErrorMsg"
+      required
+    ></app-input>
+    <app-input
+      name="userName"
+      label="Username"
+      placeholder="Username"
+      [fullWidth]="true"
+      [(ngModel)]="username"
+      [errorMsg]="usernameErrorMsg"
+      required
+    ></app-input>
+    <app-input
+      name="dateOfBirth"
       *ngIf="user?.role === 'student'"
-      label="Date of birth"
+      label="Date of birth (optional)"
       placeholder="Date of birth"
-    />
+      [fullWidth]="true"
+      [(ngModel)]="dateOfBirth"
+    ></app-input>
     <app-input
+      name="address"
       *ngIf="user?.role === 'student'"
-      label="Address"
+      label="Address (optional)"
       placeholder="Address"
-    />
-    <app-input label="Email" />
+      [fullWidth]="true"
+      [(ngModel)]="address"
+    ></app-input>
+    <app-input
+      name="email"
+      label="Email"
+      placeholder="Email name"
+      [(ngModel)]="email"
+      [errorMsg]="emailErrorMsg"
+      email
+      required
+    ></app-input>
     <app-select
+      name="specialization"
       *ngIf="user?.role === 'trainer'"
       label="Specialization"
-      placeholder="Specialization"
       [options]="specializations"
+      [(ngModel)]="specialization"
+      [errorMsg]="specializationErrorMsg"
+      required
     />
-  </div>
+  </form>
 </div>

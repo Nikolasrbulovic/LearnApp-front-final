@@ -1,7 +1,7 @@
 <div class="container">
   <app-text content="My Account" type="subheader" />
   <div class="profile">
-    <app-profile [isEditing]="isEditing" [user]="user" />
+    <app-profile [isEditing]="isEditing" />
   </div>
   <div class="buttons" *ngIf="!isEditing">
     <div class="profile-buttons">
@@ -14,7 +14,9 @@
   </div>
   <div class="edit-buttons" *ngIf="isEditing">
     <app-button (click)="onCancelClick()" variant="outlined">Cancel</app-button>
-    <app-button (click)="onSaveClick()">Save changes</app-button>
+    <app-button (click)="onSaveClick()" type="submit" formName="profile-form"
+      >Save changes</app-button
+    >
   </div>
   <div class="my-trainings">
     <app-text content="My Trainings" type="subheader" />

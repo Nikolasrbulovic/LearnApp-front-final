@@ -37,7 +37,6 @@ export class AuthApiService {
     dateOfBirth?: string
     address?: string
   }) {
-    console.log('asd')
     return this.http.post<{
       username: string
       password: string
@@ -51,7 +50,6 @@ export class AuthApiService {
       dateOfBirth,
       address,
     })
-    console.log('asd1')
   }
 
   logout() {

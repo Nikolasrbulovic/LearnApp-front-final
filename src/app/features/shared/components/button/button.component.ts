@@ -17,6 +17,7 @@ export class ButtonComponent {
   @Input() isDisabled: boolean = false
   @Input() fullWidth: boolean = false
   @Input() isLoading: boolean = false
+  @Input() formName: string = ''
   @Output() click = new EventEmitter<void>()
 
   loadingIcon = faSpinner
