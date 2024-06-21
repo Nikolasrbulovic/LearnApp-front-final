@@ -4,6 +4,7 @@ export type UserBasicInfo = {
   lastName: string
   username: string
   email: string
+  isActive: boolean
 }
 
 export type Trainer = UserBasicInfo & {

@@ -127,4 +127,50 @@ export class UserService {
     localStorage.removeItem(this.userStorageKey)
     localStorage.removeItem('authToken')
   }
+  getAllTrainers() {
+    return this.http.get(`${this.apiUrl}/users/trainers`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      },
+    })
+  }
+
+  updateProfile({
+    firstName,
+    lastName,
+    email,
+    username,
+    specializationId,
+    dateOfBirth,
+    address,
+    isActive,
+  }: {
+    firstName: string
+    lastName: string
+    email: string
+    username: string
+    specializationId?: string
+    dateOfBirth?: string
+    address?: string
+    isActive: boolean
+  }) {
+    return this.http.put(
+      `${this.apiUrl}/users/update-user`,
+      {
+        firstName,
+        lastName,
+        username,
+        email,
+        dateOfBirth,
+        address,
+        specializationId,
+        isActive,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+        },
+      }
+    )
+  }
 }

@@ -1,0 +1,17 @@
+@import '../../../../../styles/colors';
+
+.switch-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 20px;
+  margin-top: 16px;
+  .label {
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 700;
+    margin: 0;
+    color: $grey-500;
+  }
+}

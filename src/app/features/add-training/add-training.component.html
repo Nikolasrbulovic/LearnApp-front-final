@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="training">
+    <app-text content="Training" type="header-md" />
+  </div>
+  <form #addTraining="ngForm" class="form" (ngSubmit)="onSubmit()">
+    <app-input
+      name="name"
+      label="Name"
+      placeholder="Enter name"
+      [fullWidth]="true"
+      [(ngModel)]="name"
+      [errorMsg]="nameErrorMsg"
+      required
+    ></app-input>
+    <app-date-picker (dateChange)="handleDateChange($event)"></app-date-picker>
+    <app-input
+      name="duration"
+      label="Enter duration"
+      placeholder="duration"
+      [fullWidth]="true"
+      [(ngModel)]="duration"
+      [errorMsg]="durationErrorMsg"
+      required
+    ></app-input>
+    <app-input
+      name="description"
+      label="Enter description"
+      placeholder="description"
+      [fullWidth]="true"
+      [(ngModel)]="description"
+      [errorMsg]="descriptionErrorMsg"
+      required
+    ></app-input>
+    <app-select
+      name="type"
+      label="Type"
+      [options]="types"
+      [fullWidth]="true"
+      [(ngModel)]="type"
+      required
+    >
+    </app-select>
+    <app-select
+      name="trainers"
+      label="Trainers"
+      [options]="trainers"
+      [fullWidth]="true"
+      [(ngModel)]="trainer"
+      required
+    >
+    </app-select>
+    <div class="training-buttons">
+      <app-button variant="outlined">Cancel</app-button>
+      <app-button type="submit">Add</app-button>
+    </div>
+  </form>
+</div>

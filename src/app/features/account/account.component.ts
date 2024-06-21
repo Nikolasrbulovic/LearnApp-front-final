@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { TextComponent } from '../shared/components/text/text.component'
 import { ButtonComponent } from '../shared/components/button/button.component'
 import { ProfileComponent } from './components/profile/profile.component'
@@ -22,9 +22,10 @@ import { Router } from '@angular/router'
   styleUrl: './account.component.scss',
 })
 export class AccountComponent {
+  @ViewChild(ProfileComponent) profileComponent!: ProfileComponent
   public isEditing: boolean = false
   user?: User
-
+  updatedUser: any
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
@@ -35,7 +36,10 @@ export class AccountComponent {
     }
     this.user = user
   }
-
+  handleFormUpdate(updatedUser: User): void {
+    console.log('Updated User:', updatedUser) // Log the updated user data
+    this.updatedUser = updatedUser
+  }
   onEditClick = () => {
     this.isEditing = true
   }
@@ -44,7 +48,12 @@ export class AccountComponent {
     this.isEditing = false
   }
 
-  onSaveClick = () => {}
+  onSaveClick = () => {
+    if (this.profileComponent) {
+      this.profileComponent.onSubmit()
+      this.isEditing = false
+    }
+  }
 
   onViewTrainingsClick = () => {
     this.router.navigate(['/trainings'])

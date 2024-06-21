@@ -78,7 +78,6 @@ export class ProfileComponent {
         }
       }
     })
-
     this.specializationsService
       .getAllSpecializations()
       .subscribe((data: any) => {

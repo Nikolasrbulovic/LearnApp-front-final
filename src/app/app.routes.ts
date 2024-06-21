@@ -8,6 +8,7 @@ import { AccountComponent } from './features/account/account.component'
 import { TrainingsComponent } from './features/trainings/trainings.component'
 import { RegistrationValidationComponent } from './features/auth/registration-validation/registration-validation.component'
 import { ChangePasswordComponent } from './features/auth/change-password/change-password.component'
+import { AddTrainingComponent } from './features/add-training/add-training.component'
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: 'register-validation', component: RegistrationValidationComponent },
   { path: 'my-account', component: AccountComponent },
   { path: 'trainings', component: TrainingsComponent },
+  { path: 'add-training', component: AddTrainingComponent },
   { path: '**', component: HomeComponent },
 ]

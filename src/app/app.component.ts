@@ -7,8 +7,11 @@ import { ButtonComponent } from './features/shared/components/button/button.comp
 import { TextComponent } from './features/shared/components/text/text.component'
 import { UserService } from '../services/user.service'
 import { HttpClientModule } from '@angular/common/http'
-import { TrainingsService } from '../services/trainings-service'
 import { SpecializationsService } from '../services/specializations.service'
+import { SwitchComponent } from './features/shared/components/switch/switch.component'
+import { AddTrainingComponent } from './features/add-training/add-training.component'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,8 +23,12 @@ import { SpecializationsService } from '../services/specializations.service'
     FooterComponent,
     TextComponent,
     HttpClientModule,
+    SwitchComponent,
+    AddTrainingComponent,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [UserService, SpecializationsService],
+  providers: [UserService, SpecializationsService, MatNativeDateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
