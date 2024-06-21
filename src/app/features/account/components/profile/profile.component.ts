@@ -9,6 +9,7 @@ import { FormsModule, NgForm } from '@angular/forms'
 import { Router } from '@angular/router'
 import { UserService } from '../../../../../services/user.service'
 import { ButtonComponent } from '../../../shared/components/button/button.component'
+import { SwitchComponent } from '../../../shared/components/switch/switch.component'
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
     SelectComponent,
     FormsModule,
     ButtonComponent,
+    SwitchComponent,
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
@@ -37,7 +39,7 @@ export class ProfileComponent {
   dateOfBirth?: string
   address?: string
   username?: string
-
+  isActive?: boolean
   constructor(
     private specializationsService: SpecializationsService,
     private router: Router,
@@ -109,8 +111,8 @@ export class ProfileComponent {
           lastName: this.lastName!,
           email: this.email!,
           specializationId: this.specialization,
-          userType: this.user.role,
           username: this.username!,
+          isActive: this.isActive,
         })
         .subscribe({
           next: (res) => {
@@ -128,10 +130,11 @@ export class ProfileComponent {
           firstName: this.firstName!,
           lastName: this.lastName!,
           email: this.email!,
-          userType: this.user!.role,
+
           dateOfBirth: this.dateOfBirth!,
           address: this.address!,
           username: this.username!,
+          isActive: this.isActive,
         })
         .subscribe({
           next: () => {
@@ -144,6 +147,9 @@ export class ProfileComponent {
           },
         })
     }
+  }
+  onSwitchToggle(event: boolean) {
+    this.isActive = event
   }
 
   get usernameErrorMsg(): string | null {

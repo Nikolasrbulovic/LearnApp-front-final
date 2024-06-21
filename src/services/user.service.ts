@@ -69,50 +69,6 @@ export class UserService {
       .pipe(tap(() => this.clearUser()))
   }
 
-  updateProfile({
-    firstName,
-    lastName,
-    email,
-    userType,
-    username,
-    specializationId,
-    dateOfBirth,
-    address,
-  }: {
-    firstName: string
-    lastName: string
-    email: string
-    userType: string
-    username: string
-    specializationId?: string
-    dateOfBirth?: string
-    address?: string
-  }) {
-    return this.http.put<{
-      username: string
-      password: string
-      authToken: string
-    }>(
-      `${this.apiUrl}/users/update-user`,
-      {
-        firstName,
-        lastName,
-        username,
-        email,
-        userType,
-        specializationId,
-        dateOfBirth,
-        address,
-        isActive: true,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-        },
-      }
-    )
-  }
-
   setUser(data: User) {
     this.userSubject.next(data)
     localStorage.setItem(this.userStorageKey, JSON.stringify(data))
@@ -152,7 +108,7 @@ export class UserService {
     specializationId?: string
     dateOfBirth?: string
     address?: string
-    isActive: boolean
+    isActive: boolean | undefined
   }) {
     return this.http.put(
       `${this.apiUrl}/users/update-user`,

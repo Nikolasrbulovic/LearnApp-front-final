@@ -116,5 +116,9 @@
       [errorMsg]="specializationErrorMsg"
       required
     />
+    <app-switch
+      [isChecked]="isActive"
+      (toggleChange)="onSwitchToggle($event)"
+    ></app-switch>
   </form>
 </div>
