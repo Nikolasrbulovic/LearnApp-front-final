@@ -34,7 +34,7 @@ export class AddTrainingComponent {
   description?: string
   name?: string
   trainer?: string
-  date?: Date
+  date?: Date | null
   constructor(
     private trainingsService: TrainingsService,
     private userService: UserService,
@@ -55,7 +55,7 @@ export class AddTrainingComponent {
       }))
     })
   }
-  handleDateChange(data: Date) {
+  handleDateChange(data: Date | null) {
     this.date = data
   }
   onSubmit() {

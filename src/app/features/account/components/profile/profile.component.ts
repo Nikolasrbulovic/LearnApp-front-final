@@ -39,7 +39,7 @@ export class ProfileComponent {
   dateOfBirth?: string
   address?: string
   username?: string
-  isActive?: boolean
+  isActive?: boolean = false
   constructor(
     private specializationsService: SpecializationsService,
     private router: Router,
