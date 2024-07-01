@@ -35,7 +35,7 @@ export class ProfileComponent {
   firstName?: string
   lastName?: string
   email?: string
-  specialization?: string
+  specializationId?: string
   dateOfBirth?: string
   address?: string
   username?: string
@@ -73,7 +73,7 @@ export class ProfileComponent {
         this.email = user.email
         this.username = user.username
         if (user.role === 'trainer') {
-          this.specialization = user.specialization.id
+          this.specializationId = user.specialization.id
         } else {
           this.dateOfBirth = user.dateOfBirth
           this.address = user.address
@@ -110,7 +110,7 @@ export class ProfileComponent {
           firstName: this.firstName!,
           lastName: this.lastName!,
           email: this.email!,
-          specializationId: this.specialization,
+          specializationId: this.specializationId,
           username: this.username!,
           isActive: this.isActive,
         })

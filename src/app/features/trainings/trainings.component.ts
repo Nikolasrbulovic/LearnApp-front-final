@@ -64,7 +64,7 @@ export class TrainingsComponent {
     }
   }
   onClickAddTraining() {
-    this.router.navigate(['/my-account'])
+    this.router.navigate(['/add-training'])
   }
   get columnsByUserType(): Column[] {
     if (!this.trainings || !this.user) {
